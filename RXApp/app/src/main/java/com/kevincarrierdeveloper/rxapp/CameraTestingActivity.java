@@ -69,9 +69,7 @@ import java.util.List;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by Kevin on 11/6/16.
- */
+
 
 public class CameraTestingActivity extends Fragment
     implements View.OnClickListener, FragmentCompat.OnRequestPermissionsResultCallback {
@@ -82,6 +80,7 @@ public class CameraTestingActivity extends Fragment
     private byte[] mbytes;
     Spinner dropLanguages;
     String selectedLanguage = "en";
+
 
     /**
      * Conversion from screen rotation to JPEG orientation.
@@ -100,50 +99,24 @@ public class CameraTestingActivity extends Fragment
         ORIENTATIONS.append(Surface.ROTATION_270, 180);
     }
 
-    /**
-     * Tag for the {@link Log}.
-     */
+
     private static final String TAG = "CameraTAG";
 
-    /**
-     * Camera state: Showing camera preview.
-     */
+
     private static final int STATE_PREVIEW = 0;
 
-    /**
-     * Camera state: Waiting for the focus to be locked.
-     */
     private static final int STATE_WAITING_LOCK = 1;
 
-    /**
-     * Camera state: Waiting for the exposure to be precapture state.
-     */
     private static final int STATE_WAITING_PRECAPTURE = 2;
 
-    /**
-     * Camera state: Waiting for the exposure state to be something other than precapture.
-     */
     private static final int STATE_WAITING_NON_PRECAPTURE = 3;
 
-    /**
-     * Camera state: Picture was taken.
-     */
     private static final int STATE_PICTURE_TAKEN = 4;
 
-    /**
-     * Max preview width that is guaranteed by Camera2 API
-     */
     private static final int MAX_PREVIEW_WIDTH = 1920;
 
-    /**
-     * Max preview height that is guaranteed by Camera2 API
-     */
     private static final int MAX_PREVIEW_HEIGHT = 1080;
 
-    /**
-     * {@link TextureView.SurfaceTextureListener} handles several lifecycle events on a
-     * {@link TextureView}.
-     */
     private final TextureView.SurfaceTextureListener mSurfaceTextureListener
             = new TextureView.SurfaceTextureListener() {
 
@@ -168,34 +141,16 @@ public class CameraTestingActivity extends Fragment
 
     };
 
-    /**
-     * ID of the current {@link CameraDevice}.
-     */
     private String mCameraId;
 
-    /**
-     * An {@link AutoFitTextureView} for camera preview.
-     */
     private AutoFitTextureView mTextureView;
 
-    /**
-     * A {@link CameraCaptureSession } for camera preview.
-     */
     private CameraCaptureSession mCaptureSession;
 
-    /**
-     * A reference to the opened {@link CameraDevice}.
-     */
     private CameraDevice mCameraDevice;
-
-    /**
-     * The {@link android.util.Size} of camera preview.
-     */
+    
     private Size mPreviewSize;
 
-    /**
-     * {@link CameraDevice.StateCallback} is called when {@link CameraDevice} changes its state.
-     */
     private final CameraDevice.StateCallback mStateCallback = new CameraDevice.StateCallback() {
 
         @Override
@@ -450,11 +405,12 @@ public class CameraTestingActivity extends Fragment
         dropLanguages = (Spinner) view.findViewById(R.id.dropLanguages);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 getActivity(), R.array.languages_text, android.R.layout.simple_spinner_item);
+        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
 
         dropLanguages.setAdapter(adapter);
         dropLanguages.setOnItemSelectedListener(new LanguageListener());
+
     }
 
 
@@ -946,10 +902,10 @@ public class CameraTestingActivity extends Fragment
                     public void run() {
                         try {
 
-                            progressDialog = new ProgressDialog(getActivity());
-                            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                            progressDialog.setMessage("Loading...");
-                            progressDialog.show();
+                            //progressDialog = new ProgressDialog(getActivity());
+                            //progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                            //progressDialog.setMessage("Loading...");
+                            //progressDialog.show();
 
                             Log.d(TAG, "MY URL: " + args[0].toString());
                             JSONObject data = new JSONObject(args[0].toString());
@@ -958,10 +914,13 @@ public class CameraTestingActivity extends Fragment
                             String image;
                             String description;
                             String name;
+                            String dosage;
                             mp3 = data.getString("mp3");
                             image = data.getString("image");
                             description = data.getString("description");
                             name = data.getString("name");
+                            dosage = data.getString("dousage");
+                            Log.d(TAG, dosage);
 
                             Intent intent = new Intent(getActivity(), OutputActivity.class);
                             intent.putExtra("url", args[0].toString());
@@ -969,9 +928,10 @@ public class CameraTestingActivity extends Fragment
                             intent.putExtra("image", image);
                             intent.putExtra("description", description);
                             intent.putExtra("name", name);
+                            intent.putExtra("dosage", dosage);
                             startActivity(intent);
 
-                            progressDialog.hide();
+                            //progressDialog.hide();
 
                             Log.d(TAG + " URL", args[0].toString());
 
@@ -1215,7 +1175,9 @@ public class CameraTestingActivity extends Fragment
                 selectedLanguage = "zh-TW";
             }
 
-            selectedLanguage = parent.getItemAtPosition(pos).toString();
+            //selectedLanguage = parent.getItemAtPosition(pos).toString();
+
+            getSocket();
 
             if(!mSocket.connected())
             {
@@ -1232,6 +1194,8 @@ public class CameraTestingActivity extends Fragment
         }
 
     }
+
+
 }
 
 

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:theme="@style/AppFullScreenTheme">
 
     <com.kevincarrierdeveloper.rxapp.AutoFitTextureView
         android:id="@+id/texture"
@@ -15,45 +16,30 @@
         android:layout_height="160dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:background="@color/colorWhite">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-
-            <ImageView
-                android:id="@+id/picture"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/camera"
-                android:backgroundTint="@color/colorGreen"/>
-
-
-
-        </LinearLayout>
+        android:background="@color/colorWhite"
+        >
 
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:padding="5dp">
-            <LinearLayout
+            android:padding="5dp"
+            android:background="@color/colorWhite">
+            <!--<LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <CheckBox
                     android:text="Set Reminders"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="80dp"
                     android:layout_gravity="bottom|left"
-                    android:layout_below="@+id/picture"
                     android:hint="Set Reminder"
-                    android:id="@+id/checkBox"
+                    android:id="@+id/chkSetReminders"
                     android:checked="false"
+
                     />
-            </LinearLayout>
+            </LinearLayout>-->
            <LinearLayout
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
@@ -67,16 +53,32 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="150dp"
-                    android:minHeight="30dp"
-                    android:layout_below="@+id/picture"
+                    android:minHeight="80dp"
                     android:layout_gravity="bottom|right"
-                    android:background="@color/control_background"
                     android:backgroundTint="@color/colorWhite"
+                    android:background="@color/colorWhite"
+                    android:gravity="end"
+                    android:textAlignment="textEnd"
                     />
             </LinearLayout>
 
-
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/picture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/camera"
+                android:tint="@color/control_background"/>
+        </LinearLayout>
+
+
     </FrameLayout>
 
 </RelativeLayout>
