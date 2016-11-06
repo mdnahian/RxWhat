@@ -864,6 +864,7 @@ public class CameraTestingActivity extends Fragment
     private Socket getSocket() {
         try {
             mSocket = IO.socket("http://138.197.0.96:80");
+            //mSocket = IO.socket("http://138.197.92.202:80");
             Log.d(TAG, "Success");
         } catch (URISyntaxException e) {
             Log.d(TAG, "Failed");

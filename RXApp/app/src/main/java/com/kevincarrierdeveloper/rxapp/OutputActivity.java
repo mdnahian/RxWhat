@@ -116,7 +116,6 @@ public class OutputActivity extends AppCompatActivity implements View.OnClickLis
 
         Date dEnd = end.getTime();
         intent.putExtra("endTime",dEnd);
-        //intent.putExtra("title", "TEST ANDROID CAL");
         intent.putExtra("title", name + " - " + dosage);
         startActivity(intent);
     }
