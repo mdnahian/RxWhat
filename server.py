@@ -16,7 +16,7 @@ import requests
 import ast, json
 import logging
 
-BASE_URL = 'http://138.197.0.96'
+BASE_URL = 'http://138.197.62.202'
 
 app = Flask(__name__, static_url_path='')
 app.config['SECRET_KEY'] = 'Rx'
@@ -50,10 +50,10 @@ def get_drug_use(drug_name):
 		get_ndc_dictionary = json.loads(get_ndc.text)
 		ndc_code_list = get_ndc_dictionary["results"][0]["openfda"]["product_ndc"][-1]
 		ndc_code = "".join(ndc_code_list)
-		get_dbi = requests.get(('https://api.drugbankplus.com/v1/us/products/' + ndc_code), headers={'Authorization': '227d2122f2bc4b5359065739a6157271'})
+		get_dbi = requests.get(('https://api.drugbankplus.com/v1/us/products/' + ndc_code), headers={'Authorization': '83b89973953ade6c79ba941262c62d23'})
 		get_dbi_dictionary = json.loads(get_dbi.text)
 		drugbank_id = get_dbi_dictionary["ingredients"][0]["drugbank_id"]
-		get_id = requests.get(('https://api.drugbankplus.com/v1/us/drugs/' + drugbank_id), headers={'Authorization': '227d2122f2bc4b5359065739a6157271'})
+		get_id = requests.get(('https://api.drugbankplus.com/v1/us/drugs/' + drugbank_id), headers={'Authorization': '83b89973953ade6c79ba941262c62d23'})
 		get_id_dictionary = json.loads(get_id.text)
 		id = get_id_dictionary["pharmacology"]["indication_descripton"]
 		return id
@@ -74,11 +74,12 @@ def execute(image, lang='en'):
 	imgg = BASE_URL+'/img/'+fileName+'.jpg'
 
 
-	description, name = image_to_text('{ "url": "'+imgg+'" }')
+	description, name, dousage = image_to_text('{ "url": "'+imgg+'" }')
 
-	name = name.replace(" ", "")
-	
-	
+	description = re.sub('<[^<]+?>', '', description)
+
+	# name = name.replace(" ", "")
+
 	# img.save('static/img/'+fileName+'.jpg')
 
 	# print BASE_URL+'/img/'+fileName+'.jpg'
@@ -87,21 +88,30 @@ def execute(image, lang='en'):
 
 	print url
 
+	print dousage
+
 	if description != '':
-		print description			
+		print description		
 
 		try:
 			translated_text = description
 
+
 			if lang != 'en':
-				translated_text = translator('en', lang, description)[0][0][0]
+				translated_text = translator('en', lang, description)
+
+				print translated_text
+
+				translated_text = translated_text[0][0][0]
 
 			print translated_text
-			tts = gTTS(text=translated_text, lang=lang)
+			speak = name+" "+dousage+" "+translated_text[:120]
+			print speak
+			tts = gTTS(text=speak, lang=lang)
 			tts.save('static/'+fileName+'.mp3')
-			emit('url', '{ "name":"'+name+'", "mp3":"'+url+'", "image":"'+imgg+'", "description":"'+translated_text+'" }')
-		except:
-			pass
+			emit('url', '{ "name":"'+name+'", "mp3":"'+url+'", "image":"'+imgg+'", "description":"'+translated_text+'", "dousage":"'+dousage+'" }')
+		except Exception as e:
+			print e
 
 	else:
 		print "Failed to find a match"
@@ -127,18 +137,42 @@ def image_to_text(json_url):
 	    raw = response.read()
 	    data = json.loads(raw)
 
+	    isDousage = False
+	    dousage = []
+
+	    numbers = {"one":1, "two":2, "three":3}
+
 	    regions = data['regions']
 	    for region in regions:
 	    	for line in region['lines']:
 				for word in line['words']:
 					text = ''.join(i for i in word['text'] if not i.isdigit())
 					text = re.sub('\W+', ' ', text)
-					if len(text) > 8:
-						txt = get_drug_use(text)
-						if txt != 0:
-							return (txt, text)
 
-		return ('', '')
+					print text
+
+					if text.lower() in numbers:
+						dousage.append(text)
+					# elif isDousage == True:
+					# 	if text.lower() == 'day' or text.lower() == 'daily':
+					# 		isDousage = False
+					# 		dousage.append(text)
+					# 	else:
+					# 		dousage.append(text)
+
+
+					if len(text) > 7:
+						print text
+						if (' ' in text) == False: 
+							txt = get_drug_use(text)
+							print txt
+							if txt != 0:
+								dousage.append("A")
+								dousage.append("DAY")
+								# dousage = dousage.remove(text)
+								return (txt, text, ' '.join(dousage))
+
+		return ('', '', '')
 
 	    # regions = d['regions']
 
@@ -153,7 +187,7 @@ def image_to_text(json_url):
 
 	    conn.close()
 	except Exception as e:
-		return ('', '')
+		return ('', '', '')
 
 
 def save_lang(lang):
@@ -190,6 +224,7 @@ def image_sent(raw):
 	# execute(data["image"], lang)
 	language = read_lang()
 	print language
+	# print raw
 	execute(raw, language)
 
 
