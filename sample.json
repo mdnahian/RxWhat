@@ -1,0 +1,301 @@
+{
+  "language": "en",
+  "textAngle": 0.0,
+  "orientation": "Up",
+  "regions": [
+    {
+      "boundingBox": "47,11,323,51",
+      "lines": [
+        {
+          "boundingBox": "65,11,252,16",
+          "words": [
+            {
+              "boundingBox": "65,11,91,16",
+              "text": "TAYLOR'S"
+            },
+            {
+              "boundingBox": "162,11,155,16",
+              "text": "NEIGHBORHOOD"
+            }
+          ]
+        },
+        {
+          "boundingBox": "139,30,106,15",
+          "words": [
+            {
+              "boundingBox": "139,30,106,15",
+              "text": "PHARMACY"
+            }
+          ]
+        },
+        {
+          "boundingBox": "47,52,323,10",
+          "words": [
+            {
+              "boundingBox": "47,53,23,8",
+              "text": "1900"
+            },
+            {
+              "boundingBox": "74,52,51,9",
+              "text": "BELMONT"
+            },
+            {
+              "boundingBox": "128,52,28,9",
+              "text": "BLVD"
+            },
+            {
+              "boundingBox": "172,52,61,10",
+              "text": "NASHVILLE."
+            },
+            {
+              "boundingBox": "237,52,13,9",
+              "text": "TN"
+            },
+            {
+              "boundingBox": "254,52,30,9",
+              "text": "37212"
+            },
+            {
+              "boundingBox": "300,52,70,9",
+              "text": "615460-6040"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "boundingBox": "19,82,111,33",
+      "lines": [
+        {
+          "boundingBox": "20,82,110,14",
+          "words": [
+            {
+              "boundingBox": "20,82,21,14",
+              "text": "RX"
+            },
+            {
+              "boundingBox": "46,83,10,12",
+              "text": "#"
+            },
+            {
+              "boundingBox": "65,82,65,13",
+              "text": "6001103"
+            }
+          ]
+        },
+        {
+          "boundingBox": "19,101,94,14",
+          "words": [
+            {
+              "boundingBox": "19,101,49,14",
+              "text": "SMITH,"
+            },
+            {
+              "boundingBox": "72,101,41,11",
+              "text": "JOHN"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "boundingBox": "193,83,19,12",
+      "lines": [
+        {
+          "boundingBox": "193,83,19,12",
+          "words": [
+            {
+              "boundingBox": "193,83,19,12",
+              "text": "RB"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "boundingBox": "259,83,98,12",
+      "lines": [
+        {
+          "boundingBox": "259,83,98,12",
+          "words": [
+            {
+              "boundingBox": "259,83,23,12",
+              "text": "DR."
+            },
+            {
+              "boundingBox": "290,83,14,12",
+              "text": "D."
+            },
+            {
+              "boundingBox": "309,83,48,12",
+              "text": "HAASE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "boundingBox": "20,120,370,95",
+      "lines": [
+        {
+          "boundingBox": "155,120,113,11",
+          "words": [
+            {
+              "boundingBox": "155,121,61,10",
+              "text": "NASHVILLE,"
+            },
+            {
+              "boundingBox": "219,120,14,9",
+              "text": "TN"
+            },
+            {
+              "boundingBox": "236,121,32,8",
+              "text": "37212"
+            }
+          ]
+        },
+        {
+          "boundingBox": "20,121,109,9",
+          "words": [
+            {
+              "boundingBox": "20,122,24,8",
+              "text": "1900"
+            },
+            {
+              "boundingBox": "47,121,51,9",
+              "text": "BELMONT"
+            },
+            {
+              "boundingBox": "102,121,27,9",
+              "text": "BLVD"
+            }
+          ]
+        },
+        {
+          "boundingBox": "27,132,363,19",
+          "words": [
+            {
+              "boundingBox": "27,133,46,14",
+              "text": "TAKE"
+            },
+            {
+              "boundingBox": "77,133,39,13",
+              "text": "TWO"
+            },
+            {
+              "boundingBox": "121,133,76,13",
+              "text": "TABLETS"
+            },
+            {
+              "boundingBox": "202,133,21,13",
+              "text": "BY"
+            },
+            {
+              "boundingBox": "229,133,60,13",
+              "text": "MOUTH"
+            },
+            {
+              "boundingBox": "295,133,8,13",
+              "text": "2"
+            },
+            {
+              "boundingBox": "308,132,82,19",
+              "text": "TIME—"
+            }
+          ]
+        },
+        {
+          "boundingBox": "28,150,50,14",
+          "words": [
+            {
+              "boundingBox": "28,150,12,14",
+              "text": "A"
+            },
+            {
+              "boundingBox": "45,150,33,14",
+              "text": "DAY"
+            }
+          ]
+        },
+        {
+          "boundingBox": "24,201,286,14",
+          "words": [
+            {
+              "boundingBox": "24,202,27,13",
+              "text": "120"
+            },
+            {
+              "boundingBox": "57,201,101,14",
+              "text": "METFORMIN"
+            },
+            {
+              "boundingBox": "164,201,33,14",
+              "text": "HCL"
+            },
+            {
+              "boundingBox": "201,201,28,14",
+              "text": "500"
+            },
+            {
+              "boundingBox": "234,201,26,13",
+              "text": "MG"
+            },
+            {
+              "boundingBox": "265,201,45,13",
+              "text": "TABL"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "boundingBox": "19,235,120,31",
+      "lines": [
+        {
+          "boundingBox": "19,235,100,14",
+          "words": [
+            {
+              "boundingBox": "19,236,25,13",
+              "text": "NO"
+            },
+            {
+              "boundingBox": "50,235,69,14",
+              "text": "REFILLS"
+            }
+          ]
+        },
+        {
+          "boundingBox": "28,258,111,8",
+          "words": [
+            {
+              "boundingBox": "28,258,30,8",
+              "text": "Noc.*"
+            },
+            {
+              "boundingBox": "61,258,78,8",
+              "text": "00378-0234-01"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "boundingBox": "265,257,67,11",
+      "lines": [
+        {
+          "boundingBox": "265,257,67,11",
+          "words": [
+            {
+              "boundingBox": "265,257,22,11",
+              "text": "Ong:"
+            },
+            {
+              "boundingBox": "288,257,44,9",
+              "text": "08.126/10"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
